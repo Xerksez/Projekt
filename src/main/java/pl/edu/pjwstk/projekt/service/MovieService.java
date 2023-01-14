@@ -1,13 +1,9 @@
 package pl.edu.pjwstk.projekt.service;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.edu.pjwstk.projekt.model.Customer;
-import pl.edu.pjwstk.projekt.model.Hall;
 import pl.edu.pjwstk.projekt.model.Movie;
 import pl.edu.pjwstk.projekt.model.enums.MovieType;
 import pl.edu.pjwstk.projekt.repository.MovieRepository;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;

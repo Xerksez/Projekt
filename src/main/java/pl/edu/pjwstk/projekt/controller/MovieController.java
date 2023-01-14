@@ -1,5 +1,4 @@
 package pl.edu.pjwstk.projekt.controller;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/movie/")
+@RequestMapping("/api/movie/")
 public class MovieController {
     MovieService movieService;
 

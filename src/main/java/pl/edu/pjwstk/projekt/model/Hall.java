@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Hall")
+@Table(name = "halls")
 public class Hall {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class Hall {
 
     public Hall(){}
 
-    public Hall(Long id, Long seatsLimit, Set<StaffMember> staffMembers) {
+    public Hall(Long hall_id, Long seatsLimit, Set<StaffMember> staffMembers) {
         this.id = id;
         this.seatsLimit = seatsLimit;
         this.staffMembers = staffMembers;

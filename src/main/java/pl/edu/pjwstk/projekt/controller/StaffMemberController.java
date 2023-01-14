@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/staffMember/")
+@RequestMapping("/api/staffMember/")
 public class StaffMemberController {
     StaffMemberService staffMemberService;
 
@@ -71,5 +71,3 @@ public class StaffMemberController {
         return  ResponseEntity.ok(staffMemberService.findStaffMemberByFirstNameAndLastName(firstName, lastName));
     }
 }
-
-

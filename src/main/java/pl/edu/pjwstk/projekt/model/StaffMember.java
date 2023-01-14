@@ -1,14 +1,12 @@
 package pl.edu.pjwstk.projekt.model;
-
 import pl.edu.pjwstk.projekt.model.enums.StaffType;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 
 @Entity
-@Table(name = "StaffMember")
+@Table(name = "staff_members")
 public class StaffMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +21,7 @@ public class StaffMember {
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
-            name = "Hall_Staff",
+            name = "hall_Staff",
             joinColumns = { @JoinColumn(name = "staff_id") },
             inverseJoinColumns = { @JoinColumn(name = "id") }
     )
@@ -40,7 +38,7 @@ public class StaffMember {
         this.halls = halls;
     }
 
-    public void setId(Long id) {
+    public void setId(Long staff_id) {
         this.staff_id = staff_id;
     }
 
@@ -72,11 +70,11 @@ public class StaffMember {
         this.staffType = staffType;
     }
 
-    public Set<Hall> getHalls() {
+    public Set<Hall> gethalls() {
         return halls;
     }
 
-    public void setHalls(Set<Hall> halls) {
+    public void sethalls(Set<Hall> halls) {
         this.halls = halls;
     }
 }

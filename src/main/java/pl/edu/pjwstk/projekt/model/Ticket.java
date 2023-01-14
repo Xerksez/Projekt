@@ -5,7 +5,7 @@ import pl.edu.pjwstk.projekt.model.enums.TicketCategory;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Tickets")
+@Table(name = "tickets")
 public class Ticket {
 
     @Id
@@ -22,9 +22,7 @@ public class Ticket {
 
     private Hall hall;
 
-    public Ticket(){
-
-    }
+    public Ticket(){}
 
     public Ticket(Long id, TicketCategory ticketCategory, Movie movie, Hall hall) {
         this.id = id;

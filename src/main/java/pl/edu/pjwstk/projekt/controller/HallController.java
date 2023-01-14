@@ -7,7 +7,7 @@ import pl.edu.pjwstk.projekt.service.HallService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/hall/")
+@RequestMapping("/api/hall/")
 public class HallController {
     HallService hallService;
 

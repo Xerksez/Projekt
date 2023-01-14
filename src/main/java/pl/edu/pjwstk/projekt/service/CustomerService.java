@@ -6,7 +6,6 @@ import pl.edu.pjwstk.projekt.repository.CustomerRepository;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class CustomerService {
 

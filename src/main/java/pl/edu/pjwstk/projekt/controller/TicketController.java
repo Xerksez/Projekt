@@ -8,7 +8,7 @@ import pl.edu.pjwstk.projekt.service.TicketService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ticket/")
+@RequestMapping("/api/ticket/")
 public class TicketController {
     TicketService ticketService;
 
