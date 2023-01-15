@@ -31,11 +31,6 @@ public class HallController {
         return ResponseEntity.ok(hallService.getHallById(id));
     }
 
-    @GetMapping("/get?id=0")
-    public ResponseEntity<Hall> getHallByIdRequestParam(@RequestParam(name = "id") Long id) {
-        return ResponseEntity.ok(hallService.getHallById(id));
-    }
-
     //http://localhost:8080/hall/?id=0
     @DeleteMapping
     public ResponseEntity<String> deleteHallById(@RequestParam("id") Long id) {

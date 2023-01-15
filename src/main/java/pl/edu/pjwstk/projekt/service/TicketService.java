@@ -2,12 +2,14 @@ package pl.edu.pjwstk.projekt.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.edu.pjwstk.projekt.model.StaffMember;
 import pl.edu.pjwstk.projekt.model.Ticket;
 import pl.edu.pjwstk.projekt.model.enums.TicketCategory;
 import pl.edu.pjwstk.projekt.repository.TicketRepository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TicketService {
@@ -41,10 +43,13 @@ public class TicketService {
 
     }
 
-    public Ticket getTicketById(Long id){
-        return ticketRepository.getReferenceById(id);
+    public  Ticket getTicketById(Long id) {
+        Optional<Ticket> a = ticketRepository.findById(id);
+        if (a.isPresent()) {
+            return a.get();
+        }
+        throw new IllegalArgumentException();
     }
-
     public void deleteTicketById(Long id){
        ticketRepository.deleteById(id);
     }

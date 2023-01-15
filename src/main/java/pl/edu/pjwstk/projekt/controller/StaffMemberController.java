@@ -34,12 +34,6 @@ public class StaffMemberController {
         return ResponseEntity.ok(staffMemberService.getStaffMemberById(id));
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<StaffMember> getStaffMemberByIdRequestParam(@RequestParam(name = "id") Long id) {
-        return ResponseEntity.ok(staffMemberService.getStaffMemberById(id));
-    }
-
-
     //http://localhost:8080/staffMember/?id=0
     @DeleteMapping
     public ResponseEntity<String> deleteStaffMemberById(@RequestParam("id") Long id) {
@@ -60,7 +54,7 @@ public class StaffMemberController {
     }
 
     //http://localhost:8080/staffMember/firstName=cos
-    @GetMapping("/firstName")
+    @GetMapping("/firstName/")
     public ResponseEntity <List<StaffMember>> findStaffMemberByFirstName(@RequestParam(name = "firstName")String firstName){
         return ResponseEntity.ok(staffMemberService.findStaffMemberByFirstName(firstName));
     }

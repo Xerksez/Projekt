@@ -2,6 +2,7 @@ package pl.edu.pjwstk.projekt.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.pjwstk.projekt.model.Customer;
+import pl.edu.pjwstk.projekt.model.Ticket;
 import pl.edu.pjwstk.projekt.repository.CustomerRepository;
 import java.util.List;
 import java.util.Optional;
@@ -39,8 +40,12 @@ public class CustomerService {
 
     }
 
-    public Customer getCustomerById(Long id){
-        return customerRepository.getReferenceById(id);
+    public Customer getCustomerById(Long id) {
+        Optional<Customer> a = customerRepository.findById(id);
+        if (a.isPresent()) {
+            return a.get();
+        }
+        throw new IllegalArgumentException();
     }
 
     public void deleteCustomerById(Long id){
@@ -58,5 +63,9 @@ public class CustomerService {
     public List<Customer> findCustomerByFirstName(String firstName) {
         return customerRepository.findCustomerByFirstName(firstName);
     }
+
+//    public Customer findCustomerByTicket(Ticket ticket) {
+//        return customerRepository.findCustomerByTicket(ticket);
+//    }
 
 }

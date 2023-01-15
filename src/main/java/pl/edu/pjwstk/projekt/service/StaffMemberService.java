@@ -3,6 +3,7 @@ package pl.edu.pjwstk.projekt.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.pjwstk.projekt.model.Customer;
+import pl.edu.pjwstk.projekt.model.Movie;
 import pl.edu.pjwstk.projekt.model.StaffMember;
 import pl.edu.pjwstk.projekt.model.enums.StaffType;
 import pl.edu.pjwstk.projekt.repository.StaffMemberRepository;
@@ -55,8 +56,12 @@ public class StaffMemberService {
 
     }
 
-    public StaffMember getStaffMemberById(Long id){
-        return staffMemberRepository.getReferenceById(id);
+    public StaffMember getStaffMemberById(Long id) {
+        Optional<StaffMember> a = staffMemberRepository.findById(id);
+        if (a.isPresent()) {
+            return a.get();
+        }
+        throw new IllegalArgumentException();
     }
 
     public void deleteStaffMemberById(Long id){
@@ -70,4 +75,5 @@ public class StaffMemberService {
     public List<StaffMember> findStaffMemberByFirstName(String firstName) {
         return staffMemberRepository.findStaffMemberByFirstName(firstName);
     }
+
 }

@@ -3,7 +3,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pjwstk.projekt.model.Movie;
+import pl.edu.pjwstk.projekt.model.Ticket;
 import pl.edu.pjwstk.projekt.model.enums.MovieType;
+import pl.edu.pjwstk.projekt.model.enums.TicketCategory;
 import pl.edu.pjwstk.projekt.service.MovieService;
 
 import java.time.LocalDateTime;
@@ -34,11 +36,6 @@ public class MovieController {
         return ResponseEntity.ok(movieService.getMovieById(id));
     }
 
-    @GetMapping("/get?id=0")
-    public ResponseEntity<Movie> getMovieByIdRequestParam(@RequestParam(name = "id") Long id) {
-        return ResponseEntity.ok(movieService.getMovieById(id));
-    }
-
     //http://localhost:8080/movie/?id=0
     @DeleteMapping
     public ResponseEntity<String> deleteMovieById(@RequestParam("id") Long id) {
@@ -58,15 +55,15 @@ public class MovieController {
         return ResponseEntity.ok(movieService.findMovieByMovieType(movieType));
     }
 
-    //http://localhost:8080/movie/?Date=2007-12-03T10:15:30
-    @GetMapping("/Date")
-    public ResponseEntity<List<Movie>> findMovieByMovieDate(@RequestParam(name = "Date") LocalDateTime movieDate) {
-        return ResponseEntity.ok(movieService.findMovieByMovieDate(movieDate));
-    }
+//    //http://localhost:8080/movie/?Date=2007-12-03T10:15:30
+//    @GetMapping("/Date")
+//    public ResponseEntity<List<Movie>> findMovieByMovieDate(@RequestParam(name ="Date") LocalDateTime movieDate) {
+//        return ResponseEntity.ok(movieService.findMovieByMovieDate(movieDate));
+//    }
 
-        //http://localhost:8080/movie/?name=Shrek
-        @GetMapping("/name")
-        public ResponseEntity<Movie> findByMovieName(@RequestParam(name = "name") String movieName) {
+    //http://localhost:8080/movie/?name=Shrek
+        @GetMapping("/{name}")
+        public ResponseEntity<Movie> findByMovieName(@PathVariable("name") String movieName) {
             return ResponseEntity.ok(movieService.findByMovieName(movieName));
         }
 

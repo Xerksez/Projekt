@@ -32,12 +32,6 @@ public class TicketController {
         return ResponseEntity.ok(ticketService.getTicketById(id));
     }
 
-    @GetMapping("/get?id=0")
-    public ResponseEntity<Ticket> getTicketByIdRequestParam(@RequestParam(name = "id") Long id) {
-        return ResponseEntity.ok(ticketService.getTicketById(id));
-    }
-
-
     //http://localhost:8080/ticket/?id=0
     @DeleteMapping
     public ResponseEntity<String> deleteTicketById(@RequestParam("id") Long id) {
@@ -53,7 +47,7 @@ public class TicketController {
 
     //http://localhost:8080/ticket/?Category=NORMAL
     @GetMapping("/Category")
-    public ResponseEntity<List<Ticket>> findTicketByTicketCategory(@RequestParam(name = "job") TicketCategory ticketCategory) {
+    public ResponseEntity<List<Ticket>> findTicketByTicketCategory(@RequestParam(name = "Category") TicketCategory ticketCategory) {
         return ResponseEntity.ok(ticketService.findTicketByTicketCategory(ticketCategory));
     }
 }

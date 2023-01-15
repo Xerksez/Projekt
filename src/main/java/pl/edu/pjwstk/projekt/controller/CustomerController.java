@@ -1,5 +1,6 @@
 package pl.edu.pjwstk.projekt.controller;
 import pl.edu.pjwstk.projekt.model.Customer;
+import pl.edu.pjwstk.projekt.model.Ticket;
 import pl.edu.pjwstk.projekt.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,12 +29,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable("id") Long id){
-        return ResponseEntity.ok(customerService.getCustomerById(id));
-    }
-
-    @GetMapping("/get")
-    public ResponseEntity<Customer> getCustomerByIdRequestParam(@RequestParam(name = "id") Long id){
+    public ResponseEntity <Customer> getCustomerById(@PathVariable("id") Long id){
         return ResponseEntity.ok(customerService.getCustomerById(id));
     }
 
@@ -50,7 +46,7 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.updateCustomer(id, customer));
     }
 
-    //http://localhost:8080/customer/firstName=cos
+    //http://localhost:8080/customer/?firstName=cos
     @GetMapping("/firstName")
     public ResponseEntity<List<Customer>> findCustomerByFirstName(@RequestParam(name = "firstName")String firstName){
         return ResponseEntity.ok(customerService.findCustomerByFirstName(firstName));
@@ -61,5 +57,12 @@ public class CustomerController {
     public ResponseEntity<Customer> findCustomerByFirstNameAndLastName(@PathVariable("firstName") String firstName , @PathVariable("lastName") String lastname){
         return  ResponseEntity.ok(customerService.findCustomerByFirstNameAndLastName(firstName, lastname));
     }
-    }
+
+//    //http://localhost:8080/customer/?ticket=cos
+//    @GetMapping("/ticket")
+//    public ResponseEntity<Customer> findCustomerByTicket(@RequestParam(name = "ticket")Ticket ticket){
+//        return ResponseEntity.ok(customerService.findCustomerByTicket(ticket));
+//    }
+
+}
 

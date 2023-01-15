@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
-    List<Movie> findMovieByMovieDate(LocalDateTime movieDate);
-    Optional<Movie> findMovieByMovieName(String movieName);
+  //  List<Movie> findMovieByMovieDate(LocalDateTime movieDate);
+    Optional<Movie> findByMovieName(String movieName);
     List<Movie> findMovieByMovieType(MovieType movieType);
 }

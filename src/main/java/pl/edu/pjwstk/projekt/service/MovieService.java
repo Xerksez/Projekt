@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.projekt.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.edu.pjwstk.projekt.model.Hall;
 import pl.edu.pjwstk.projekt.model.Movie;
 import pl.edu.pjwstk.projekt.model.enums.MovieType;
 import pl.edu.pjwstk.projekt.repository.MovieRepository;
@@ -43,8 +44,12 @@ public class MovieService {
 
     }
 
-    public Movie getMovieById(Long id){
-        return movieRepository.getReferenceById(id);
+    public Movie getMovieById(Long id) {
+        Optional<Movie> a = movieRepository.findById(id);
+        if (a.isPresent()) {
+            return a.get();
+        }
+        throw new IllegalArgumentException();
     }
 
     public void deleteMovieById(Long id){
@@ -55,15 +60,17 @@ public class MovieService {
         return movieRepository.findMovieByMovieType(movieType);
     }
 
-    public List<Movie> findMovieByMovieDate(LocalDateTime movieDate) {
-        return movieRepository.findMovieByMovieDate(movieDate);
-    }
+//
+//    public  List<Movie> findMovieByMovieDate(LocalDateTime movieDate) {
+//        return movieRepository.findByMovieName(movieDate);
+//    }
 
     public Movie findByMovieName(String movieName){
-        Optional<Movie> movie = movieRepository.findMovieByMovieName(movieName);
+        Optional<Movie> movie = movieRepository.findByMovieName(movieName);
         if(movie.isPresent()){
             return movie.get();
         }
         throw new IllegalArgumentException();
     }
+
 }

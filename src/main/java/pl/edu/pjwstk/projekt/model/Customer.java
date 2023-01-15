@@ -1,9 +1,6 @@
 package pl.edu.pjwstk.projekt.model;
-
-import pl.edu.pjwstk.projekt.model.enums.TicketCategory;
-
 import javax.persistence.*;
-import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "customers")
