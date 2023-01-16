@@ -32,6 +32,7 @@ class CustomerServiceTest {
 
     @Test
     void Should_CreateAuthorWithCorrectInput() {
+
         //given
         Customer a = new Customer();
         //when
@@ -50,9 +51,7 @@ class CustomerServiceTest {
         when(customerRepository.findCustomerByFirstNameAndLastName(anyString(), anyString()))
                 .thenReturn(Optional.empty());
         //then
-        assertThrows(IllegalArgumentException.class, () -> {
-            customerService.findCustomerByFirstNameAndLastName(anyString(), anyString());
-        });
+        assertThrows(IllegalArgumentException.class, () -> customerService.findCustomerByFirstNameAndLastName(anyString(), anyString()));
     }
 
     @Test
